@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (jumpAction.triggered  && isOnGround)
+        if (jumpAction.triggered  && isOnGround  && !gameOver)
         {
             playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse );
 
@@ -48,6 +48,7 @@ public class PlayerController : MonoBehaviour
             gameOver = true;
             Debug.Log("Game Over!");
 
+            // Play death animation
             playerAnim.SetBool("Death_b", true);
             playerAnim.SetInteger("DeathType_int", 1);
         }
