@@ -4,14 +4,24 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody playerRb;
-    public InputAction jumpAction;
+    private Animator playerAnim;
+
+    public ParticleSystem explosionParticle;
 
     public float jumpForce = 10f;
     public float gravityModifier;
     public bool isOnGround = true;
     public bool gameOver = false;
 
-    private Animator playerAnim;
+
+    public InputAction jumpAction;
+
+    
+    
+    
+    
+
+    
     void Start()
     {
         playerRb = GetComponent<Rigidbody>();
@@ -49,6 +59,7 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Game Over!");
 
             // Play death animation
+            explosionParticle.Play();
             playerAnim.SetBool("Death_b", true);
             playerAnim.SetInteger("DeathType_int", 1);
         }
